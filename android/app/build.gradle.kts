@@ -4,6 +4,15 @@ plugins {
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
+import java.util.Properties
+import java.io.FileInputStream
+
+
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("key.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+}
 
 android {
     namespace = "com.example.satellite"
@@ -30,13 +39,32 @@ android {
         versionName = flutter.versionName
     }
 
-    buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
-        }
+    android {
+    // ...
+
+    signingConfigs {
+    create("release") {
+        storeFile = file("C:/Users/samir/upload-keystore.jks")
+        storePassword = "Sudip@580"
+        keyAlias = "upload"
+        keyPassword = "Sudip@580"
     }
+}
+
+    buildTypes {
+    getByName("release") {
+        isMinifyEnabled = true
+        isShrinkResources = true
+        signingConfig = signingConfigs.getByName("release")
+        proguardFiles(
+            getDefaultProguardFile("proguard-android-optimize.txt"),
+            "proguard-rules.pro"
+        )
+    }
+}
+
+
+}
 }
 
 flutter {
