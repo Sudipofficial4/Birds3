@@ -30,7 +30,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.satellite"
+        applicationId = "com.harish.birds3project"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -44,7 +44,7 @@ android {
 
     signingConfigs {
     create("release") {
-        storeFile = file("C:/Users/samir/upload-keystore.jks")
+        storeFile = file("C:/Users/samir/upload-keystore.jks.old")
         storePassword = "Sudip@580"
         keyAlias = "upload"
         keyPassword = "Sudip@580"
