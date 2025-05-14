@@ -15,7 +15,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace = "com.harish.birds3"
+    namespace = "com.harish.Birds3-project"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
